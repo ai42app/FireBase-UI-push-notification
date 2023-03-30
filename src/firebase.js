@@ -13,11 +13,13 @@ const firebaseConfig = {
   measurementId: "G-N47WBVYKYG"
 };
 
+const vapidKey = 'BG3zz9ZcBcNmulZjGJQlS8RtBxWH-BViMkSDM2-RTzbMR_21_RYVGIvrX7LtZ0RlH27a-B098j12iIf0BTLnlrE'
+
 const firebaseApp = initializeApp(firebaseConfig);
 const messaging = getMessaging(firebaseApp);
 
 export const fetchToken = (setTokenFound, setToken) => {
-  return getToken(messaging, {vapidKey: 'BG3zz9ZcBcNmulZjGJQlS8RtBxWH-BViMkSDM2-RTzbMR_21_RYVGIvrX7LtZ0RlH27a-B098j12iIf0BTLnlrE'}).then((currentToken) => {
+  return getToken(messaging, {vapidKey:vapidKey }).then((currentToken) => {
     if (currentToken) {
       console.log('current token for client: ', currentToken);
       setTokenFound(true);
